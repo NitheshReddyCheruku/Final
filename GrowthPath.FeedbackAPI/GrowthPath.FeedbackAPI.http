@@ -1,0 +1,6 @@
+@GrowthPath.FeedbackAPI_HostAddress = http://localhost:5220
+
+GET {{GrowthPath.FeedbackAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
