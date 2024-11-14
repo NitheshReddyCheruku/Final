@@ -1,4 +1,5 @@
-﻿using GrowthPath.AuthAPI.Models.DTO;
+﻿using GrowthPath.AuthAPI.Models;
+using GrowthPath.AuthAPI.Models.DTO;
 
 namespace GrowthPath.AuthAPI.Service
 {
@@ -7,5 +8,7 @@ namespace GrowthPath.AuthAPI.Service
         Task<string> Register(RegistrationRequestDto registrationRequestDto);
         Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto);
         Task<bool> AssignRole(string email, string rolename);
+        Task<ApplicationUser> GetUserByIdAsync(string userId);
+
     }
 }

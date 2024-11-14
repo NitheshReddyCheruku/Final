@@ -1,6 +1,6 @@
-@GrowthPath.AssignmentAPI_HostAddress = http://localhost:5224
+@GRowthPath.AssignmentAPI_HostAddress = http://localhost:5107
 
-GET {{GrowthPath.AssignmentAPI_HostAddress}}/weatherforecast/
+GET {{GRowthPath.AssignmentAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

@@ -1,0 +1,144 @@
+{
+  "Routes": [
+    // Auth API Routes
+    {
+      "DownstreamPathTemplate": "/api/auth/register",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7724
+        }
+      ],
+      "UpstreamPathTemplate": "/auth-api/register",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7724
+        }
+      ],
+      "UpstreamPathTemplate": "/auth-api/login",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/assignRole",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7724
+        }
+      ],
+      "UpstreamPathTemplate": "/auth-api/assignRole",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/user/{userId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7724
+        }
+      ],
+      "UpstreamPathTemplate": "/auth-api/user/{userId}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/employees",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7724
+        }
+      ],
+      "UpstreamPathTemplate": "/auth-api/employees",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+
+    // Learning API Routes
+    {
+      "DownstreamPathTemplate": "/api/course",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7723
+        }
+      ],
+      "UpstreamPathTemplate": "/learning-api/course",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/course/{courseId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7723
+        }
+      ],
+      "UpstreamPathTemplate": "/learning-api/course/{courseId}",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/course/all",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7723
+        }
+      ],
+      "UpstreamPathTemplate": "/learning-api/courses",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+
+    // Assignment API Routes
+    {
+      "DownstreamPathTemplate": "/api/assignment/assign-course",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7725
+        }
+      ],
+      "UpstreamPathTemplate": "/assignment-api/assign-course",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/assignment/{assignmentId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7725
+        }
+      ],
+      "UpstreamPathTemplate": "/assignment-api/assignment/{assignmentId}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/assignment/employee/{employeeId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7725
+        }
+      ],
+      "UpstreamPathTemplate": "/assignment-api/assignments/employee/{employeeId}",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:7777"
+  }
+}

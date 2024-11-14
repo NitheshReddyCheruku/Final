@@ -1,4 +1,4 @@
-namespace GrowthPath.AssignmentAPI
+namespace GRowthPath.AssignmentAPI
 {
     public class WeatherForecast
     {

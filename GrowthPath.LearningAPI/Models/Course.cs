@@ -16,8 +16,9 @@ namespace GrowthPath.LearningAPI.Models
         public string Description { get; set; } // Brief description of the course content
 
         [Required]
-        public DateTime CreatedDate { get; set; } // Date when the course was created
+        public DateTime EndDate { get; set; } // Date when the course was created
+        public int TotalModules { get; set; }
 
-        
+
     }
 }

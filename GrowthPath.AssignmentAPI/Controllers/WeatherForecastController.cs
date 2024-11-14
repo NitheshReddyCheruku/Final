@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace GrowthPath.AssignmentAPI.Controllers
+namespace GRowthPath.AssignmentAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

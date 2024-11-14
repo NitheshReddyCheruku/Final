@@ -103,6 +103,11 @@ namespace GrowthPath.AuthAPI.Service
 
             return true;
         }
-
+        public async Task<ApplicationUser> GetUserByIdAsync(string userId)
+        {
+            // Assume _userManager is a dependency injected UserManager<User> for user management
+            var user = await _userManager.FindByIdAsync(userId);
+            return user;
+        }
     }
 }

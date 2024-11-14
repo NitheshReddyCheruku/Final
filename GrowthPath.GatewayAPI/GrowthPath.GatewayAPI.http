@@ -1,4 +1,4 @@
-@GrowthPath.GatewayAPI_HostAddress = http://localhost:5297
+@GrowthPath.GatewayAPI_HostAddress = http://localhost:5269
 
 GET {{GrowthPath.GatewayAPI_HostAddress}}/weatherforecast/
 Accept: application/json

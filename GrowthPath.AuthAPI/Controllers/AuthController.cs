@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GrowthPath.AuthAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -14,10 +14,11 @@ namespace GrowthPath.AuthAPI.Controllers
 
         private readonly IAuthService _authService;
         private readonly ResponseDto _response = new ResponseDto();
-
-        public AuthController(IAuthService authService)
+        private readonly IUserService _userService;
+        public AuthController(IAuthService authService, IUserService userService)
         {
             _authService = authService;
+            _userService = userService;
         }
         [AllowAnonymous]
         [HttpPost("register")]
@@ -59,5 +60,35 @@ namespace GrowthPath.AuthAPI.Controllers
             }
             return Ok(_response);
         }
+        //[HttpGet("user/{userId}")]
+        //public async Task<IActionResult> GetUserById(string userId)
+        //{
+        //    // Assuming _authService has a method to fetch user by ID
+        //    var user = await _authService.GetUserByIdAsync(userId);
+
+        //    if (user == null)
+        //    {
+        //        _response.IsSuccess = false;
+        //        _response.Message = "User not found.";
+        //        return NotFound(_response);
+        //    }
+
+        //    var userDto = new UserDto
+        //    {
+        //        Id = user.Id,
+        //        Email = user.Email,
+        //        Name = user.Name,
+        //        PhoneNumber = user.PhoneNumber
+        //    };
+
+        //    _response.Result = userDto;
+        //    return Ok(_response);
+        //}
+        //[HttpGet("employees")]
+        //public async Task<IActionResult> GetEmployees()
+        //{
+        //    var employees = await _userService.GetUsersByRole("Employee");  // Fetching employees by role
+        //    return Ok(employees);  // Returning the list of EmployeeDto objects
+        //}
     }
 }
