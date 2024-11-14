@@ -1,0 +1,6 @@
+@GrowthPath.AssignmentAPI_HostAddress = http://localhost:5224
+
+GET {{GrowthPath.AssignmentAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
