@@ -1,6 +1,0 @@
-@GRowthPath.AssignmentAPI_HostAddress = http://localhost:5107
-
-GET {{GRowthPath.AssignmentAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
