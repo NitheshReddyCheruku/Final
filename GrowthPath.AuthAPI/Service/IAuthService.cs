@@ -8,7 +8,13 @@ namespace GrowthPath.AuthAPI.Service
         Task<string> Register(RegistrationRequestDto registrationRequestDto);
         Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto);
         Task<bool> AssignRole(string email, string rolename);
-        Task<ApplicationUser> GetUserByIdAsync(string userId);
+        //Task<ApplicationUser> GetUserByIdAsync(string userId);
+        Task<List<UserDto>> GetAllUsersAsync(); // New method
+        Task<UserDto> GetUserByIdAsync(string userId);
+
+
+
+
 
     }
 }

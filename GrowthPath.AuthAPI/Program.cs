@@ -22,6 +22,17 @@ namespace GrowthPath.AuthAPI
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    policy =>
+                    {
+                        policy
+                            .AllowAnyOrigin()    // Allow requests from any origin
+                            .AllowAnyMethod()     // Allow any HTTP method (GET, POST, etc.)
+                            .AllowAnyHeader();    // Allow any HTTP headers
+                    });
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -38,6 +49,8 @@ namespace GrowthPath.AuthAPI
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCors("AllowAll");
+
 
 
             app.MapControllers();

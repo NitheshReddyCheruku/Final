@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using GrowthPath.AuthAPI.Data;
 using Azure;
+using Microsoft.EntityFrameworkCore;
 
 namespace GrowthPath.AuthAPI.Service
 {
@@ -42,6 +43,23 @@ namespace GrowthPath.AuthAPI.Service
             return result.Errors.FirstOrDefault()?.Description;
         }
 
+        public async Task<List<UserDto>> GetAllUsersAsync()
+        {
+            var users = await _userManager.Users.ToListAsync();
+
+            var userDtos = users.Select(user => new UserDto
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Name = user.Name,
+                PhoneNumber = user.PhoneNumber
+            }).ToList();
+
+            return userDtos;
+        }
+       
+
+
         public async Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto)
         {
             var user = await _userManager.FindByNameAsync(loginRequestDto.UserName);
@@ -75,6 +93,7 @@ namespace GrowthPath.AuthAPI.Service
             };
         }
 
+
         public async Task<bool> AssignRole(string email, string roleName)
         {
             var user = await _userManager.FindByEmailAsync(email);
@@ -103,11 +122,27 @@ namespace GrowthPath.AuthAPI.Service
 
             return true;
         }
-        public async Task<ApplicationUser> GetUserByIdAsync(string userId)
+      /*  public async Task<ApplicationUser> GetUserByIdAsync(string userId)
         {
             // Assume _userManager is a dependency injected UserManager<User> for user management
             var user = await _userManager.FindByIdAsync(userId);
             return user;
+        }*/
+        public async Task<UserDto> GetUserByIdAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return null;
+            }
+
+            return new UserDto
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Name = user.Name,
+                PhoneNumber = user.PhoneNumber
+            };
         }
     }
 }

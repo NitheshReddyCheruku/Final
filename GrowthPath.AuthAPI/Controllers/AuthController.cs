@@ -60,6 +60,47 @@ namespace GrowthPath.AuthAPI.Controllers
             }
             return Ok(_response);
         }
+        // This ensures only authenticated users can access this endpoint
+        [HttpGet("users")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            try
+            {
+                var users = await _authService.GetAllUsersAsync();
+                _response.Result = users;
+                return Ok(_response);
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = "Error retrieving users: " + ex.Message;
+                return StatusCode(500, _response);
+            }
+        }
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetUserById(string userId)
+        {
+            try
+            {
+                var userDto = await _authService.GetUserByIdAsync(userId);
+
+                if (userDto == null)
+                {
+                    _response.IsSuccess = false;
+                    _response.Message = "User not found.";
+                    return NotFound(_response);
+                }
+
+                _response.Result = userDto;
+                return Ok(_response);
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = "Error retrieving user: " + ex.Message;
+                return StatusCode(500, _response);
+            }
+        }
         //[HttpGet("user/{userId}")]
         //public async Task<IActionResult> GetUserById(string userId)
         //{
